@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "561313265547",
+    "firebase_url": "https://cloudnote-40b06.firebaseio.com",
+    "project_id": "cloudnote-40b06",
+    "storage_bucket": "cloudnote-40b06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561313265547:android:5cff25fe41b38f12",
+        "android_client_info": {
+          "package_name": "com.example.root.cloudnote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561313265547-uu3gff6pdu53alhifqgjb2djgvntptd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.root.cloudnote",
+            "certificate_hash": "183f7c9bdcb1a383d15c1132817a51a7335e9f00"
+          }
+        },
+        {
+          "client_id": "561313265547-g8bggk6rpd1dm5chffg37uttudepkvjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXNb92jNL-utTydguwu_PjhkpoCJIGOQ8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561313265547-g8bggk6rpd1dm5chffg37uttudepkvjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
