@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button mLoginButton;
     private Button mRegisterButton;
+    private Button mForgotPasswordButton;
     private FirebaseAuth mAuth;
     private ProgressDialog processdialog;
     private String TAG=LoginActivity.class.getSimpleName();
@@ -42,8 +43,16 @@ public class LoginActivity extends AppCompatActivity {
         mPassword= (EditText) findViewById(R.id.password_edit_text);
         mLoginButton= (Button) findViewById(R.id.login_button);
         mRegisterButton= (Button) findViewById(R.id.register_button);
+        mForgotPasswordButton= (Button) findViewById(R.id.forgot_passwor_button);
 
         mAuth=FirebaseAuth.getInstance();
+
+        mForgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+            }
+        });
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,9 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                         else {
                             Toast.makeText(LoginActivity.this, "Login Successful",
                                     Toast.LENGTH_SHORT).show();
-                            finish();
                         }
-
+                        finish();
                     }
                 });
 

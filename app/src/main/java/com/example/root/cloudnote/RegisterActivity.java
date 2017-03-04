@@ -1,5 +1,6 @@
 package com.example.root.cloudnote;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -22,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button mRegisterButton;
     private FirebaseAuth mAuth;
+    private ProgressDialog processdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +51,21 @@ public class RegisterActivity extends AppCompatActivity {
     private void startRegister() {
         String email=mEmail.getText().toString();
         String password=mPassword.getText().toString();
+        processdialog=new ProgressDialog(this);
+        processdialog.setMessage("Registering...");
+        processdialog.show();
 
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete( Task<AuthResult> task) {
+                processdialog.dismiss();
                 if (!task.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Register failed",
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Toast.makeText(RegisterActivity.this, "Registration Successful",
+                            Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
