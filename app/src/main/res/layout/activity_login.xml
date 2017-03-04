@@ -47,23 +47,6 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:text="Login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_button"
-        android:layout_marginTop="47dp"
-        android:layout_alignTop="@+id/login_button"
-        android:layout_alignParentStart="true" />
-
-    <Button
         android:text="Forgot Password?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,4 +54,30 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="29dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textinput_password"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"></com.google.android.gms.common.SignInButton>
+
+    <Button
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button"
+        android:layout_below="@+id/google_sign_in_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+
+    <Button
+        android:text="Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_button"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/login_button"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
