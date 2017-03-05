@@ -31,7 +31,7 @@ public class EditorActivity extends AppCompatActivity {
         titleWrapper.setHint("Title");
         notesWrapper.setHint("Notes");
 
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data");
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data").child(mAuth.getCurrentUser().getUid());
 
         mtitle= (EditText) findViewById(R.id.title_edit_text);
         mnotes= (EditText) findViewById(R.id.notes_edit_text);
@@ -60,7 +60,7 @@ public class EditorActivity extends AppCompatActivity {
         String notes=mnotes.getText().toString();
 
         if (!TextUtils.isEmpty(title) || !TextUtils.isEmpty(notes)){
-            DatabaseReference currentuser=mDatabase.child(mAuth.getCurrentUser().getUid()).push();
+            DatabaseReference currentuser=mDatabase.push();
             currentuser.child("Title").setValue(title);
             currentuser.child("Notes").setValue(notes);
             finish();
