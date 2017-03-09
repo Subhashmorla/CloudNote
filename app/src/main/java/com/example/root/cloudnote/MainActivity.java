@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data").child(mAuth.getCurrentUser().getUid());
+        mDatabase.keepSynced(true);
 
 
 
