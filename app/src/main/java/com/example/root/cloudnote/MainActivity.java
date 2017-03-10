@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView notesList;
     private DatabaseReference mDatabase;
     private  String TAG=MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +50,19 @@ public class MainActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Note,NoteViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Note, NoteViewHolder>(
                 Note.class,R.layout.notesrow,NoteViewHolder.class,mDatabase) {
             @Override
-            protected void populateViewHolder(NoteViewHolder viewHolder, Note model, int position) {
+            protected void populateViewHolder(NoteViewHolder viewHolder, Note model,final int position) {
+                final String note_key=getRef(position).getKey();
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setNotes(model.getNotes());
+
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent editorIntent=new Intent(MainActivity.this,EditorActivity.class);
+                        editorIntent.putExtra("note key",note_key);
+                        startActivity(editorIntent);
+                    }
+                });
 
             }
         };
@@ -73,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         public void  setNotes(String notes){
             TextView notesView= (TextView) mView.findViewById(R.id.notes_text_view);
             notesView.setText(notes);
+
+
 
         }
     }
