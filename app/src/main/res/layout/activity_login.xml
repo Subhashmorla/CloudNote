@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textinput_email"
-
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_alignParentStart="true">
 
         <EditText
@@ -30,11 +31,12 @@
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_height="wrap_content"
+        android:id="@+id/textinput_password"
         android:layout_below="@+id/textinput_email"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="46dp"
-        android:id="@+id/textinput_password">
+        android:layout_alignParentStart="true">
 
         <EditText
             android:layout_width="match_parent"
@@ -46,38 +48,44 @@
             android:hint="Password..." />
     </android.support.design.widget.TextInputLayout>
 
+
     <Button
-        android:text="Forgot Password?"
+        android:text="Login"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/forgot_passwor_button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="29dp" />
+        android:id="@+id/login_button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/google_sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textinput_password"
+        android:layout_below="@+id/login_button"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"></com.google.android.gms.common.SignInButton>
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"></com.google.android.gms.common.SignInButton>
 
     <Button
-        android:text="Login"
+        android:text="Forgot Password?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login_button"
-        android:layout_below="@+id/google_sign_in_button"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="11dp" />
+        android:id="@+id/forgot_passwor_button"
+        android:background="@color/background"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+      android:layout_below="@id/google_sign_in_button"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_button"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/login_button"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp" />
+
+
 </RelativeLayout>
