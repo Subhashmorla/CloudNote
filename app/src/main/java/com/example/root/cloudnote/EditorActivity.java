@@ -29,6 +29,8 @@ public class EditorActivity extends AppCompatActivity {
     private DatabaseReference mDatabasekey;
     private String noteKey=null;
     private boolean hasCurrentNote=false;
+    private String Title;
+    private String Notes;
 
 
     @Override
@@ -54,12 +56,12 @@ public class EditorActivity extends AppCompatActivity {
             setTitle("Edit Note");
             mtitle.setCursorVisible(false);
             mnotes.setCursorVisible(false);
-            mDatabasekey.addValueEventListener(new ValueEventListener() {
+            mDatabasekey.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Note map=dataSnapshot.getValue(Note.class);
-                    String Title=map.getTitle();
-                    String Notes=map.getNotes();
+                     Title=map.getTitle();
+                     Notes=map.getNotes();
 
                     mtitle.setText(Title);
                     mnotes.setText(Notes);
@@ -81,12 +83,14 @@ public class EditorActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(EditorActivity.this,"Database error",Toast.LENGTH_SHORT).show();
 
                 }
             });
         }
         else {
             setTitle("Add Note");
+            invalidateOptionsMenu();
             mtitle.requestFocus();
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         }
@@ -102,13 +106,31 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (noteKey==null){
+            MenuItem menuItem= menu.findItem(R.id.delete_menu_item);
+            menuItem.setVisible(false);
+        }
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.save_menu_item:
                 saveNotes();
-                finish();
+                break;
+            case R.id.delete_menu_item:
+                deleteNotes();
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteNotes() {
+mDatabasekey.removeValue();
+        finish();
     }
 
     private void saveNotes() {

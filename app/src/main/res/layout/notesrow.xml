@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:paddingBottom="16dp"
+            android:paddingBottom="8dp"
             android:id="@+id/title_text_view"
             android:textSize="20sp"
             android:alpha="0.87"
