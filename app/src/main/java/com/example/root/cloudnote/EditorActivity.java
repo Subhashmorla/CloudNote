@@ -3,6 +3,7 @@ package com.example.root.cloudnote;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,13 +39,9 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         mAuth=FirebaseAuth.getInstance();
-
-
-
-
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar_editor);
+        setSupportActionBar(toolbar);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data").child(mAuth.getCurrentUser().getUid());
-
-
 
         mtitle= (EditText) findViewById(R.id.title_edit_text);
         mnotes= (EditText) findViewById(R.id.notes_edit_text);
