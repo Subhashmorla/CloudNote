@@ -8,17 +8,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
     tools:context="com.example.root.cloudnote.LoginActivity">
     <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/text_login_title"
         android:text="Cloud Note"
         android:textSize="48dp"
         android:textStyle="bold"
-        android:textColor="@color/authui_colorPrimary"
+        android:fontFamily="cursive"
+        android:textColor="@color/card"
+        android:alpha="0.87"
+        android:layout_centerHorizontal="true"
         />
 
     <android.support.design.widget.TextInputLayout
@@ -77,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_button"
         android:layout_alignParentStart="true"
+        android:alpha="0.87"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"></com.google.android.gms.common.SignInButton>
 

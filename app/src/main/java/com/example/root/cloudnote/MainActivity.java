@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        startAnim();
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
 
             Transition   explode = new Explode();
@@ -76,11 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    private void startAnim() {
-
-
-    }
 
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.root.cloudnote;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -43,7 +45,7 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         mAuth=FirebaseAuth.getInstance();
-        startAnim();
+
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
 
@@ -114,9 +116,6 @@ public class EditorActivity extends AppCompatActivity {
 
     }
 
-    private void startAnim() {
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,16 +141,12 @@ public class EditorActivity extends AppCompatActivity {
                 saveNotes();
                 break;
             case R.id.delete_menu_item:
-                deleteNotes();
+                showDeleteConfirmationDialog();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void deleteNotes() {
-mDatabasekey.removeValue();
-        finish();
-    }
 
     private void saveNotes() {
         String title=mtitle.getText().toString();
@@ -171,6 +166,34 @@ mDatabasekey.removeValue();
 
 
         }
+
+    }
+
+
+    private void deleteNotes() {
+        mDatabasekey.removeValue();
+        finish();
+    }
+
+    private void showDeleteConfirmationDialog(){
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setMessage("Do u want to delete?");
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteNotes();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (dialog!=null)
+                    dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
 
     }
 }
