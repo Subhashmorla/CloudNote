@@ -1,12 +1,17 @@
 package com.example.root.cloudnote;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Transition;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private RecyclerView notesList;
     private DatabaseReference mDatabase;
+    private FloatingActionButton fabButton;
     private  String TAG=MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        startAnim();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+
+            Transition   explode = new Explode();
+
+            explode.setDuration(900);
+
+            explode.excludeTarget(android.R.id.statusBarBackground, true);
+
+            explode.excludeTarget(android.R.id.navigationBarBackground, true);
+            getWindow().setExitTransition(explode);
+            getWindow().setEnterTransition(explode);
+        }
 
         notesList= (RecyclerView) findViewById(R.id.recycler_view);
         notesList.setHasFixedSize(true);
@@ -43,7 +62,22 @@ public class MainActivity extends AppCompatActivity {
         mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data").child(mAuth.getCurrentUser().getUid());
         mDatabase.keepSynced(true);
 
+        fabButton= (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editorIntent=new Intent(MainActivity.this,EditorActivity.class);
+                startActivity(editorIntent);
+            }
+        });
 
+
+
+
+    }
+
+
+    private void startAnim() {
 
 
     }
@@ -114,10 +148,6 @@ public class MainActivity extends AppCompatActivity {
                 loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(loginIntent);
                 finish();
-                break;
-            case R.id.add_menu_item:
-                Intent editorIntent=new Intent(MainActivity.this,EditorActivity.class);
-                startActivity(editorIntent);
                 break;
 
         }

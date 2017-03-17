@@ -1,10 +1,14 @@
 package com.example.root.cloudnote;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.transition.Explode;
+import android.transition.Transition;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -39,6 +43,21 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         mAuth=FirebaseAuth.getInstance();
+        startAnim();
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+
+            Transition   explode = new Explode();
+
+            explode.setDuration(900);
+
+            explode.excludeTarget(android.R.id.statusBarBackground, true);
+
+            explode.excludeTarget(android.R.id.navigationBarBackground, true);
+            getWindow().setExitTransition(explode);
+            getWindow().setEnterTransition(explode);
+        }
+
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar_editor);
         setSupportActionBar(toolbar);
         mDatabase= FirebaseDatabase.getInstance().getReference().child("User Data").child(mAuth.getCurrentUser().getUid());
@@ -92,6 +111,10 @@ public class EditorActivity extends AppCompatActivity {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         }
 
+
+    }
+
+    private void startAnim() {
 
     }
 

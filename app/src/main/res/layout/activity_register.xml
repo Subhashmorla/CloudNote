@@ -9,12 +9,24 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.root.cloudnote.RegisterActivity">
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/text_register_title"
+        android:text="Cloud Note"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        android:textColor="@color/authui_colorPrimary"
+        />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_below="@+id/text_register_title"
         android:id="@+id/textinput_register_email">
 
         <EditText
@@ -27,13 +39,21 @@
             android:hint="Email..." />
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:text="Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_activity_button"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/textinput_register_password" />
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/textInputLayout2"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textinput_register_password">
+        android:layout_marginTop="11dp"
+        android:id="@+id/textinput_register_password"
+        android:layout_below="@+id/textinput_register_email"
+        android:layout_alignParentStart="true">
 
         <EditText
             android:layout_width="match_parent"
@@ -44,12 +64,4 @@
             android:layout_weight="1"
             android:hint="Password..." />
     </android.support.design.widget.TextInputLayout>
-
-    <Button
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_activity_button"
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/textinput_register_password" />
 </RelativeLayout>

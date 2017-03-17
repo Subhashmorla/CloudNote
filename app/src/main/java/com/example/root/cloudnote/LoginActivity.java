@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button mLoginButton;
     private Button mRegisterButton;
-    private Button mForgotPasswordButton;
+    private TextView mForgotPasswordButton;
     private SignInButton googleButton;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         mPassword= (EditText) findViewById(R.id.password_edit_text);
         mLoginButton= (Button) findViewById(R.id.login_button);
         mRegisterButton= (Button) findViewById(R.id.register_button);
-        mForgotPasswordButton= (Button) findViewById(R.id.forgot_passwor_button);
+        mForgotPasswordButton= (TextView) findViewById(R.id.forgot_passwor_button);
         googleButton= (SignInButton) findViewById(R.id.google_sign_in_button);
 
 
