@@ -43,14 +43,6 @@
             android:hint="Email..." />
     </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_activity_button"
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/textinput_register_password" />
-
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,4 +60,14 @@
             android:layout_weight="1"
             android:hint="Password..." />
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:text="Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_activity_button"
+        android:layout_marginTop="43dp"
+        android:minWidth="@dimen/auth_method_button_width"
+        android:layout_below="@+id/textinput_register_password"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

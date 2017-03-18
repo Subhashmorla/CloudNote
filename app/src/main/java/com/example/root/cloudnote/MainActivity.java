@@ -2,6 +2,7 @@ package com.example.root.cloudnote;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setExitTransition(explode);
             getWindow().setEnterTransition(explode);
         }
+
 
         notesList= (RecyclerView) findViewById(R.id.recycler_view);
         notesList.setHasFixedSize(true);
@@ -143,6 +145,21 @@ public class MainActivity extends AppCompatActivity {
                 loginIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(loginIntent);
                 finish();
+                break;
+            case  (R.id.add_event):
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    Calendar  cal = Calendar.getInstance();
+
+                    Intent intent = new Intent(Intent.ACTION_EDIT);
+                    intent.setType("vnd.android.cursor.item/event");
+                    intent.putExtra("beginTime", cal.getTimeInMillis());
+                    intent.putExtra("allDay", true);
+                    intent.putExtra("rrule", "FREQ=YEARLY");
+                    intent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
+                    intent.putExtra("title", "A Test Event from android app");
+                    startActivity(intent);
+                }
                 break;
 
         }
